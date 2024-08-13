@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CategorySection from '../../../components/CategorySection'
+
 
 async function getPost(slug) {
   const res = await fetch(
@@ -18,9 +18,6 @@ async function getPost(slug) {
   const post = posts.find(post => {
     const PostSlug = post.slug.replace(/\/$/, ''); // Remove trailing slash
     const Slug = slug.replace(/\/$/, ''); // Remove trailing slash from the comparison slug
-  
-    console.log(`Comparing: ${PostSlug} with ${Slug}`);
-    
     return PostSlug === Slug;
   });
   return post;
@@ -44,19 +41,11 @@ export default async function PostsPage({ params }) {
         src={post.image}
         width={500}
         height={100}
-        // className="card-img-top"
         alt={post.title}
       />
       <h4>{post.createdAt.slice(0,10)}</h4>
       <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-    <CategorySection/>
-      <div className="tags">
-        {post.tags.map((tag, index) => (
-          <span key={index} className="tag">
-            {tag}
-          </span>
-        ))}
-      </div>
+  
     </div>
   );
 }

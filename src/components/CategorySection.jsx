@@ -17,6 +17,7 @@ const generateCaptcha = () => {
 
 const SectionFour = () => {
   const router = useRouter();
+  const [inputData, setInputData] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,41 +32,41 @@ const SectionFour = () => {
   const categoryLinks = {
     "artificial-intelligence": "categories/artificial-intelligence",
     "blogging": "categories/blogging",
-    "brand-marketing": "/brand-marketing",
-    "content-marketing": "/content-marketing",
-    "digital-marketing": "/digital-marketing",
-    "ecommerce": "/ecommerce",
-    "email-marketing": "/email-marketing",
-    "facebook-marketing": "/facebook-marketing",
-    "frameworks": "/frameworks",
-    "full-stack-javascript-development": "/full-stack-javascript-development",
-    "google-remarketing": "/google-remarketing",
-    "hubspot": "/hubspot",
-    "infographic": "/infographic",
-    "infusionsoft": "/infusionsoft",
-    "internet-marketing": "/internet-marketing",
-    "ios-app": "/ios-app",
-    "iphone-app-development": "/iphone-app-development",
-    "java-development": "/java-development",
-    "joomla": "/joomla",
-    "linkedin-marketing": "/linkedin-marketing",
-    "logo-design": "/logo-design",
-    "magento": "/magento",
-    "main-post": "/main-post",
-    "mobile-application-development": "/mobile-application-development",
-    "office-culture": "/office-culture",
-    "online-reputation-management": "/online-reputation-management",
-    "orm": "/orm",
-    "paid-marketing": "/paid-marketing",
-    "php": "/php",
-    "seo": "/seo",
-    "shopify": "/shopify",
-    "social-media-marketing": "/social-media-marketing",
-    "titanium-development": "/titanium-development",
-    "web-application-development": "/web-application-development",
-    "web-design": "/web-design",
-    "web-developments": "/web-developments",
-    "wordpress": "/wordpress",
+    "brand-marketing": "/categories/brand-marketing",
+    "content-marketing": "/categories/content-marketing",
+    "digital-marketing": "/categories/digital-marketing",
+    "ecommerce": "/categories/ecommerce",
+    "email-marketing": "/categories/email-marketing",
+    "facebook-marketing": "/categories/facebook-marketing",
+    "frameworks": "/categories/frameworks",
+    "full-stack-javascript-development": "/categories/full-stack-javascript-development",
+    "google-remarketing": "/categories/google-remarketing",
+    "hubspot": "/categories/hubspot",
+    "infographic": "/categories/infographic",
+    "infusionsoft": "/categories/infusionsoft",
+    "internet-marketing": "/categories/internet-marketing",
+    "ios-app": "/categories/ios-app",
+    "iphone-app-development": "/categories/iphone-app-development",
+    "java-development": "/categories/java-development",
+    "joomla": "/categories/joomla",
+    "linkedin-marketing": "/categories/linkedin-marketing",
+    "logo-design": "/categories/logo-design",
+    "magento": "/categories/magento",
+    "main-post": "/categories/main-post",
+    "mobile-application-development": "/categories/mobile-application-development",
+    "office-culture": "/categories/office-culture",
+    "online-reputation-management": "/categories/online-reputation-management",
+    "orm": "/categories/orm",
+    "paid-marketing": "/categories/paid-marketing",
+    "php": "/categories/php",
+    "seo": "/categories/seo",
+    "shopify": "/categories/shopify",
+    "social-media-marketing": "/categories/social-media-marketing",
+    "titanium-development": "/categories/titanium-development",
+    "web-application-development": "/categories/web-application-development",
+    "web-design": "/categories/web-design",
+    "web-developments": "/categories/web-developments",
+    "wordpress": "/categories/wordpress",
   };
   useEffect(() => {
     setCaptcha(generateCaptcha());
@@ -105,10 +106,16 @@ const SectionFour = () => {
       router.push(categoryLinks[event.target.value]);
     }
   };
+
+  const handleInputData =(e)=>{
+    setInputData(e.target.value)
+  }
+  console.log(inputData)
+
   return (
     <>
       <div className="categories">
-        <input type="text" placeholder="Search"></input>
+        <input type="text" onChange={(e)=> handleInputData(e)}  placeholder="Search"></input>
         <h2>Categories</h2>
         <select
           name="cat"
@@ -156,7 +163,7 @@ const SectionFour = () => {
         />
 
         <PhoneInput
-          defaultCountry="ua"
+          country="ua"
           value={phone}
           onChange={(phone) => setPhone(phone)}
         />

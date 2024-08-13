@@ -19,7 +19,7 @@ const AdminPage = () => {
   const [slugData, setSlugData] = useState("");
   const [image, setImage] = useState(null);
   const [availableTags] = useState([
-    "Artifical Intelligence",
+    "Artificial Intelligence",
     "Brand Marketing",
     "Blogging",
     "Content Marketing",
@@ -28,7 +28,7 @@ const AdminPage = () => {
     "Email Marketing",
     "Facebook Marketing",
     "Frameworks",
-    "Fullstack JS Development",
+    "Full Stack Javascript Development",
     "Google Remarketing",
     "Infographic",
     "Hubspot",
